@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
+    tools:context=".fragments.HomeFragment">
 
 
     <ScrollView
@@ -62,8 +62,8 @@
                         android:textColor="@color/white"
                         android:text="Tetap mematuhi protokol kesehatan, jaga jarak,jangan lupa menggunakan masker, dan Selamat beraktifitas"/>
                 </LinearLayout>
-
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -296,7 +296,6 @@
                     </LinearLayout>
                 </HorizontalScrollView>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 

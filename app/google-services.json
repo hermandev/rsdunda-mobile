@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "138794468324",
+    "project_id": "rsgost-9eb1c",
+    "storage_bucket": "rsgost-9eb1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138794468324:android:9432d8073a89d7f393fdf1",
+        "android_client_info": {
+          "package_name": "com.example.layananmandiri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138794468324-gel49tvqq2fiug0tci2nn8nuv00reehm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.layananmandiri",
+            "certificate_hash": "2e58a71f2ab0beed4370ca03e94a3d862b9740f8"
+          }
+        },
+        {
+          "client_id": "138794468324-74scjobldcrr9a6ucqatvoq5hr7bbgn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSkLbGmY2b-m0xAL4ckqhr4hpwD02IGbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138794468324-74scjobldcrr9a6ucqatvoq5hr7bbgn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

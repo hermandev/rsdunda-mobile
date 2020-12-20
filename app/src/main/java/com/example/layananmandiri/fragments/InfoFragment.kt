@@ -1,10 +1,11 @@
-package com.example.layananmandiri
+package com.example.layananmandiri.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.layananmandiri.R
 
 class InfoFragment : Fragment() {
     private val ARG_PARAM1 = "param1"

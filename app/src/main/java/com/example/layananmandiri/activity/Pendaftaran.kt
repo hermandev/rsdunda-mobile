@@ -15,6 +15,26 @@ class Pendaftaran : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
         actionBar?.title = "Pendaftaran"
+
+
+//        val dialog = Dialog(this)
+//        dialog.setContentView(R.layout.pop_up_daftar)
+//        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+//        dialog.setCancelable(false)
+//        dialog.
+//            val btn_popup_norm = findViewById<MaterialButton>(R.id.btn_popup_norm)
+//            val btn_popup_nik = findViewById<MaterialButton>(R.id.btn_popup_nik)
+//
+//            btn_popup_norm?.setOnClickListener {
+////                popupNORM()
+//                print("nik KLIK")
+//            }
+//
+//            btn_popup_nik?.setOnClickListener {
+////                popupNIK()
+//                print("nik KLIK")
+//            }
+//            dialog?.show()
     }
 
 
