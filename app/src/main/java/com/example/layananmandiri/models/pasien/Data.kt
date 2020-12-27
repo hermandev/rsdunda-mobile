@@ -1,4 +1,4 @@
-package com.example.layananmandiri.models
+package com.example.layananmandiri.models.pasien
 
 data class Data(
     val ALAMAT: String,

@@ -1,21 +1,29 @@
 package com.example.layananmandiri.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ScrollView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.layananmandiri.R
 import com.example.layananmandiri.activity.Pendaftaran
 import com.example.layananmandiri.api.CloudApi
-import com.example.layananmandiri.models.Pasien
+import com.example.layananmandiri.models.pasien.Pasien
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Integer.parseInt
 
 
 class HomeFragment : Fragment() {
@@ -53,34 +61,52 @@ class HomeFragment : Fragment() {
             }
     }
 
+    @SuppressLint("NewApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val home_appbar = view.findViewById<AppBarLayout>(R.id.home_appbar)
+        val home_scroll = view.findViewById<ScrollView>(R.id.home_scroll)
+        home_appbar.bringToFront()
+
+        home_scroll.setOnScrollChangeListener(View.OnScrollChangeListener { _i, scrollX, scrollY, oldScrollX, oldScrollY ->
+            println("SCROLL ==> ${scrollX} AND ${scrollY} OLD ${oldScrollX} AND ${oldScrollY}")
+            if(scrollY >= 60) {
+                home_appbar.setBackgroundColor(resources.getColor(R.color.main_color))
+            } else {
+                home_appbar.setBackgroundColor(resources.getColor(android.R.color.transparent))
+            }
+        })
+        println("SCROLL ==> ${home_scroll.height}")
+
+
         val btn_pendaftaran = view.findViewById<MaterialCardView>(R.id.btn_pendaftaran)
+
 
 
         btn_pendaftaran.setOnClickListener {
             popupDaftar()
-//            val intent = Intent(this.context, Pendaftaran::class.java)
-//            startActivity(intent)
         }
 
-//        getPasien()
+//        getPasien(1)
 
     }
 
-    private fun getPasien() {
-        CloudApi().getPasien().enqueue(object : Callback<Pasien> {
+    private fun getPasien(norm:Int) {
+        CloudApi().getPasien(norm).enqueue(object : Callback<Pasien> {
             override fun onResponse(call: Call<Pasien>, response: Response<Pasien>) {
-                TODO("Not yet implemented")
-                if(response.isSuccessful) {
-                    println(response.body()?.data)
-                } else {
-                    println("Error")
-                }
+                val intent = Intent(context, Pendaftaran::class.java)
+                intent.putExtra("ID", response.body()?.data?.ID.toString())
+                intent.putExtra("NORM", response.body()?.data?.NORM.toString())
+                intent.putExtra("NAMA", response.body()?.data?.NAMA.toString())
+                intent.putExtra("ALAMAT", response.body()?.data?.ALAMAT.toString())
+                intent.putExtra("TANGGAL_LAHIR", response.body()?.data?.TANGGAL_LAHIR.toString())
+                intent.putExtra("JENIS_KELAMIN", response.body()?.data?.JENIS_KELAMIN.toString())
+                intent.putExtra("STATUS", response.body()?.data?.STATUS.toString())
+                startActivity(intent)
             }
 
             override fun onFailure(call: Call<Pasien>, t: Throwable) {
-                TODO("Not yet implemented")
+
             }
         })
     }
@@ -106,9 +132,11 @@ class HomeFragment : Fragment() {
         dialogBuild?.setView(formDialog)
         val mAlertDialog = dialogBuild?.show()
         formDialog.findViewById<MaterialButton>(R.id.btn_check_norm).setOnClickListener {
+            var norm = formDialog.findViewById<EditText>(R.id.check_input_norm)
+            GlobalScope.launch(Dispatchers.IO) {
+                getPasien(parseInt(norm.text.toString()))
+            }
             mAlertDialog?.dismiss()
-            val intent = Intent(this.context, Pendaftaran::class.java)
-            startActivity(intent)
         }
     }
     private fun popupNIK() {
@@ -124,3 +152,5 @@ class HomeFragment : Fragment() {
     }
 
 }
+
+

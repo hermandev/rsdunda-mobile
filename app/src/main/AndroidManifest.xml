@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.layananmandiri">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,21 +12,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LayananMandiri"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".activity.SplashScreen" android:screenOrientation="portrait">
+        android:usesCleartextTraffic="true"
+        tools:ignore="UnusedAttribute">
+        <activity android:name=".activity.FormProfile"></activity>
+        <activity android:name=".activity.VerifikasiOtp" />
+        <activity android:name=".activity.KirimOtp" />
+        <activity
+            android:name=".activity.SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Register"  android:screenOrientation="portrait" />
-        <activity android:name=".activity.Login"  android:screenOrientation="portrait" />
-        <activity android:name=".activity.JadwalDokter"  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.KantongDarah"  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.InfoBed"  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.CheckRekamMedik"  android:screenOrientation="portrait"/>
-        <activity android:name=".activity.Pendaftaran"  android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.Register"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.JadwalDokter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.KantongDarah"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.InfoBed"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CheckRekamMedik"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Pendaftaran"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"

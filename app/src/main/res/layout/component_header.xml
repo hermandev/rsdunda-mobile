@@ -36,6 +36,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:background="@android:color/transparent"
+        app:backgroundTint="@color/text_color"
         app:iconTint="@color/white"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -46,9 +47,11 @@
         app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:icon="@drawable/ic_notive"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true" />
 
 
 
