@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:138794468324:android:9432d8073a89d7f393fdf1",
+        "mobilesdk_app_id": "1:138794468324:android:3e58098a363caf9d93fdf1",
         "android_client_info": {
-          "package_name": "com.example.layananmandiri"
+          "package_name": "com.rsdunda.layananmandiri"
         }
       },
       "oauth_client": [
         {
-          "client_id": "138794468324-gel49tvqq2fiug0tci2nn8nuv00reehm.apps.googleusercontent.com",
+          "client_id": "138794468324-5vo5i2i0u1m62rahtg0u2vjmts5vcpej.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.layananmandiri",
+            "package_name": "com.rsdunda.layananmandiri",
             "certificate_hash": "2e58a71f2ab0beed4370ca03e94a3d862b9740f8"
           }
         },

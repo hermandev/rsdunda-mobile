@@ -2,4 +2,42 @@
     <string name="app_name">Layanan Mandiri</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="Poliklinik">
+        <item>-- pilih --</item>
+        <item>INTERNA</item>
+        <item>ANAK</item>
+        <item>POLI BEDAH</item>
+        <item>OBSGYN</item>
+        <item>THT</item>
+        <item>GIGI</item>
+        <item>FISIOTERAPHY/REHAB MEDIK</item>
+        <item>KULIT KELAMIN</item>
+        <item>PARU</item>
+        <item>JANTUNG</item>
+        <item>JIWA</item>
+        <item>ORTHOPEDI</item>
+        <item>GIZI</item>
+        <item>BEDAH SARAF</item>
+        <item>GERIATRI</item>
+        <item>VCT</item>
+        <item>AKUPUNTUR</item>
+        <item>HEMODIALISA</item>
+        <item>UROLOGI</item>
+        <item>MATA</item>
+    </string-array>
+
+    <string-array name="Keperluan">
+        <item>-- pilih --</item>
+        <item>Pemeriksaan Dokter Spesialis</item>
+        <item>Pemeriksaan SubSpesialis</item>
+        <item>Paket Konsultasi + Tindakan USG</item>
+        <item>Tindakan USG</item>
+        <item>Konsultasi + Rawat Luka</item>
+        <item>Paket Rawat Luka</item>
+        <item>Paket  Konsultasi + Visum</item>
+        <item>Paket Visum</item>
+        <item>Paket KIR Biasa</item>
+        <item>Paket KIR Lengkap</item>
+    </string-array>
 </resources>

@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context=".activity.Pendaftaran">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:scrollbars="none"
-        tools:ignore="MissingConstraints">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
             android:orientation="vertical">
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -184,12 +181,13 @@
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/background_input"
                                 android:padding="10dp"
-                                android:hint="12/12/2021"
+                                android:hint="--/--/----"
                                 android:layout_marginTop="10dp"
                                 android:textAlignment="center"
                                 android:clickable="true"
                                 android:focusable="false"
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/text_color"
+                                tools:ignore="HardcodedText,KeyboardInaccessibleWidget" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -230,19 +228,46 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Poli Tujuan"
+                                android:textSize="12dp"
+                                android:layout_marginBottom="5dp"/>
 
                             <Spinner
                                 android:id="@+id/poli_tujuan"
                                 android:background="@drawable/background_input"
-                                android:padding="10dp"
-                                android:layout_marginTop="10dp"
+                                android:paddingHorizontal="10dp"
                                 android:textAlignment="center"
                                 android:focusable="true"
                                 android:textColor="@color/text_color"
                                 android:autofillHints="Poliklinik Tujuan"
                                 android:layout_height="wrap_content"
-                                android:layout_width="match_parent"/>
+                                android:layout_width="match_parent"
+                                android:spinnerMode="dialog"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Keperluan"
+                                android:textSize="12dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="5dp"/>
+                            <Spinner
+                                android:id="@+id/keperluan_tujuan"
+                                android:background="@drawable/background_input"
+                                android:paddingHorizontal="10dp"
+                                android:textAlignment="center"
+                                android:focusable="true"
+                                android:textColor="@color/text_color"
+                                android:autofillHints="Poliklinik Tujuan"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:spinnerMode="dialog"/>
 
                         </LinearLayout>
                     </LinearLayout>
@@ -280,12 +305,86 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:orientation="vertical">
-
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <RadioGroup
+                                android:id="@+id/jenis_rujukan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center">
+
+                                    <RadioButton
+                                        android:id="@+id/btnBPJS"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="15dp"
+                                        android:buttonTint="@color/text_color"
+                                        android:text="BPJS"/>
+                                    <RadioButton
+                                        android:id="@+id/btnUMUM"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:buttonTint="@color/text_color"
+                                        android:text="UMUM"/>
+                            </RadioGroup>
+
+                            <EditText
+                                android:id="@+id/no_bpjs"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/background_input"
+                                android:padding="10dp"
+                                android:inputType="numberDecimal"
+                                android:layout_marginTop="10dp"
+                                android:textAlignment="center"
+                                android:hint="NO BPJS"
+                                android:focusable="true"
+                                android:textColor="@color/text_color" />
+
+                            <LinearLayout
+                                android:id="@+id/ln_jenis_rujukan"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:textAlignment="center"
+                                    android:layout_gravity="center"
+                                    android:text="Jenis Rujukan?"/>
+
+                                <RadioGroup
+                                    android:id="@+id/data_rujukan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center">
+
+                                    <RadioButton
+                                        android:id="@+id/btnBaru"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:buttonTint="@color/text_color"
+                                        android:layout_marginRight="15dp"
+                                        android:text="BARU" />
+
+                                    <RadioButton
+                                        android:id="@+id/btnLama"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="15dp"
+                                        android:buttonTint="@color/text_color"
+                                        android:text="LAMA"/>
 
 
+                                </RadioGroup>
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -335,6 +434,74 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
                                 <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/KTP"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:elevation="0dp"
+                                    app:cardElevation="0dp"
+                                    android:clickable="true">
+
+                                    <LinearLayout
+                                        android:layout_width="70dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/ktp_pasien"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/ic_add_foto"/>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:textColor="@color/text_color"
+                                            android:textSize="12sp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginBottom="5dp"
+                                            android:textAlignment="center"
+                                            android:text="KTP"/>
+
+                                    </LinearLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/surat_rujukan_baru"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:elevation="0dp"
+                                    app:cardElevation="0dp"
+                                    android:visibility="gone"
+                                    android:clickable="true">
+
+                                    <LinearLayout
+                                        android:layout_width="70dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/ic_add_foto"/>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:textColor="@color/text_color"
+                                            android:textSize="12sp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginBottom="5dp"
+                                            android:textAlignment="center"
+                                            android:text="Rujukan Baru"/>
+
+                                    </LinearLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/resume_kontrol"
+                                    android:visibility="gone"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
@@ -360,74 +527,14 @@
                                             android:layout_marginTop="5dp"
                                             android:layout_marginBottom="5dp"
                                             android:textAlignment="center"
-                                            android:text="KTP"/>
-
-                                    </LinearLayout>
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
-                                    android:elevation="0dp"
-                                    app:cardElevation="0dp"
-                                    android:clickable="true">
-
-                                    <LinearLayout
-                                        android:layout_width="70dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_add_file"/>
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/text_color"
-                                            android:textSize="12sp"
-                                            android:layout_marginTop="5dp"
-                                            android:layout_marginBottom="5dp"
-                                            android:textAlignment="center"
-                                            android:text="Rujukan Baru"/>
-
-                                    </LinearLayout>
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
-                                    android:elevation="0dp"
-                                    app:cardElevation="0dp"
-                                    android:clickable="true">
-
-                                    <LinearLayout
-                                        android:layout_width="70dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_add_file"/>
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/text_color"
-                                            android:textSize="12sp"
-                                            android:layout_marginTop="5dp"
-                                            android:layout_marginBottom="5dp"
-                                            android:textAlignment="center"
                                             android:text="S.Kontrol/Resume"/>
 
                                     </LinearLayout>
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/rujukan_terakhir"
+                                    android:visibility="gone"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
@@ -444,7 +551,7 @@
                                         <ImageView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_add_file"/>
+                                            android:src="@drawable/ic_add_foto"/>
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -464,11 +571,11 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDaftarkan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:text="DAFTARKAN"/>
         </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

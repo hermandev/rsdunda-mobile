@@ -13,8 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.layananmandiri.MainActivity
 import com.example.layananmandiri.R
-import com.example.layananmandiri.api.CloudApi
-import com.example.layananmandiri.models.users.Users
+import com.example.layananmandiri.util.SharedUsers
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -23,15 +22,9 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
-class VerifikasiOtp : AppCompatActivity() {
+class  VerifikasiOtp : AppCompatActivity() {
     lateinit var code1:EditText
     lateinit var code2:EditText
     lateinit var code3:EditText
@@ -39,19 +32,22 @@ class VerifikasiOtp : AppCompatActivity() {
     lateinit var code5:EditText
     lateinit var code6:EditText
     lateinit var textNomorHP:TextView
+    lateinit var textKirimUlang:TextView
     lateinit var buttonVerifyOTP:MaterialButton
     lateinit var loading:ProgressBar
     lateinit var verificationId: String
+    lateinit var users: SharedUsers
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verifikasi_otp)
         supportActionBar?.hide()
-
+        users = SharedUsers(this@VerifikasiOtp)
         textNomorHP = findViewById(R.id.textNomorHp)
         textNomorHP.text = "+62-${intent.getStringExtra("nomorhp")}"
         buttonVerifyOTP = findViewById(R.id.buttonVerifyOTP)
         loading = findViewById(R.id.loading)
+        textKirimUlang = findViewById(R.id.textKirimUlang)
 
         code1 = findViewById(R.id.code1)
         code2 = findViewById(R.id.code2)
@@ -61,6 +57,10 @@ class VerifikasiOtp : AppCompatActivity() {
         code6 = findViewById(R.id.code6)
 
         setupOTPInputs()
+
+        textKirimUlang.setOnClickListener {
+            kirimOTP()
+        }
 
         verificationId = intent.getStringExtra("verificationId").toString()
         buttonVerifyOTP.setOnClickListener {
@@ -77,16 +77,12 @@ class VerifikasiOtp : AppCompatActivity() {
             if(verificationId != null) {
                 loading.visibility = View.VISIBLE
                 buttonVerifyOTP.visibility = View.GONE
-                GlobalScope.launch(Dispatchers.IO) {
                     val credential = PhoneAuthProvider.getCredential(verificationId, code)
                     signInWithPhoneAuthCredential(credential)
-                }
             }
         }
 
-        findViewById<TextView>(R.id.textKirimUlang).setOnClickListener {
-            kirimOTP()
-        }
+
 
     }
 
@@ -152,18 +148,16 @@ class VerifikasiOtp : AppCompatActivity() {
         Firebase.auth.signInWithCredential(credential)
             .addOnCompleteListener(this) {task ->
                 if(task.isSuccessful) {
-                    println("signInWithCredential:success")
                     val user = task.result?.user
+                    users.isAuth = true
+                    users.uid = user?.uid
+                    users.nomorhp = user?.phoneNumber
                     val intent = Intent(this@VerifikasiOtp, MainActivity::class.java)
-                    intent.putExtra("uid", user?.uid)
-                    intent.putExtra("nomorhp", user?.phoneNumber)
                     startActivity(intent)
                     finish()
                 } else {
                     println( "signInWithCredential:failure ${task.exception}")
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
-                    }
+                    if (task.exception is FirebaseAuthInvalidCredentialsException) {}
                 }
             }
     }
@@ -174,7 +168,7 @@ class VerifikasiOtp : AppCompatActivity() {
         val phoneNumberInE164 = PhoneNumberUtils.formatNumberToE164("+62${intent.getStringExtra("nomorhp")}", "ID")
         val options = PhoneAuthOptions.newBuilder(Firebase.auth)
             .setPhoneNumber(phoneNumberInE164.toString())
-            .setTimeout(30L, TimeUnit.SECONDS)
+            .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(this)
             .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {

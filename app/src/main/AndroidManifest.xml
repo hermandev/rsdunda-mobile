@@ -14,9 +14,6 @@
         android:theme="@style/Theme.LayananMandiri"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".activity.FormProfile"></activity>
-        <activity android:name=".activity.VerifikasiOtp" />
-        <activity android:name=".activity.KirimOtp" />
         <activity
             android:name=".activity.SplashScreen"
             android:screenOrientation="portrait">
@@ -26,6 +23,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.FormProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.VerifikasiOtp"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.KirimOtp"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.Register"
             android:screenOrientation="portrait" />

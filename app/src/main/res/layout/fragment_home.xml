@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:elevation="0dp"
         app:elevation="0dp"
-
         android:background="@android:color/transparent">
 
         <include layout="@layout/component_header"/>
@@ -52,6 +51,7 @@
                         android:textColor="@color/white"
                         android:text="Selamat Pagi"/>
                     <TextView
+                        android:id="@+id/textHeaderName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
